@@ -55,7 +55,7 @@ jobs:
     - run:
         name: Build Docker Image
         command: |
-            docker build -t aedifex_hack:latest .
+            docker build -t aedifex_hack:lacework-test .
     - run:
         name: Install lw-scanner
         command: |
