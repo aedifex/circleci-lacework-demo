@@ -37,7 +37,7 @@ jobs:
         name: Execute scan
         command: |
           # Need to move this
-          ./bin/lw-scanner evaluate chriscircleci/vuln_django 7f7305bea884b63578c28d4513a916e2247ec152 -d=/home/circleci/project/ --scan-library-packages --html --save --tags ci_provider=circleci,user=aedifex
+          ./bin/lw-scanner evaluate chriscircleci/vuln_django 7f7305bea884b63578c28d4513a916e2247ec152 -d=/home/circleci/project/ --scan-library-packages --html --save --tags ci_provider=circleci,user=aedifex,build_stage=dev
     - run:
         name: Create directory to persist artifacts
         command: |
