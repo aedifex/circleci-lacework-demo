@@ -63,7 +63,7 @@ jobs:
             ./install_lw_scanner.sh
     - run:
         name: Execute Scan
-        command: ./bin/lw-scanner evaluate aedifex_hack latest -d=/home/circleci/project/ --scan-library-packages --html --save --tags ci_provider=circleci,user=aedifex,build-id=$CIRCLE_BUILD_NUM,component=base_image
+        command: ./bin/lw-scanner evaluate aedifex_hack latest -d=/home/circleci/project/ --scan-library-packages --html --save --tags ci_provider=circleci,user=aedifex,component=base_image
     - run:
         name: Create directory to persist artifacts
         command: |
