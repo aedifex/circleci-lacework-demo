@@ -55,7 +55,7 @@ jobs:
     - run:
         name: Build Docker Image
         command: |
-            docker build -t aedifex_hack:lacework-test component:clojure . --label "component=clojure"
+            docker build -t aedifex_hack:lacework-test -t component:clojure . --label "component=clojure"
     - run:
         name: Install lw-scanner
         command: |
