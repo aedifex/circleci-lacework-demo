@@ -120,3 +120,7 @@ jobs:
         name: Pull Python Image
         command: |
             docker pull node:10
+    - run:
+        name: Execute Scan
+        command: |
+            ./bin/lw-scanner evaluate node:10 latest --scan-library-packages --save
