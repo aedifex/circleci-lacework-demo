@@ -123,4 +123,4 @@ jobs:
     - run:
         name: Execute Scan
         command: |
-            ./bin/lw-scanner evaluate node 10  --scan-library-packages --save
+            ./bin/lw-scanner evaluate node 10  --scan-library-packages --save --tags component=cruise-node
