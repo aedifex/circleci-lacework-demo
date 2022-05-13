@@ -5,11 +5,12 @@ orbs:
 workflows:
   with-lw-scanner:
    jobs:
-      - scan-vuln-image-with-lw-scanner
-      - build-and-scan-vuln-image
-  with-lacework-cli:
-    jobs:
-      - cli-scan
+      #- scan-vuln-image-with-lw-scanner
+      #- build-and-scan-vuln-image
+      - build-and-scan-python-image
+  #with-lacework-cli:
+  #  jobs:
+  #    - cli-scan
 
 jobs:
   scan-vuln-image-with-lw-scanner:
@@ -96,3 +97,12 @@ jobs:
 
       - store_artifacts:
           path: lacework-artifacts
+
+  build-and-scan-python-image:
+    machine: true
+    steps:
+    - checkout
+    - run:
+        name: Hello!
+        command: |
+            echo "testing!"
