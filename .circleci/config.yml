@@ -64,6 +64,11 @@ jobs:
           chmod +x ./bin/lw-scanner
           # check scanner
           ./bin/lw-scanner > /dev/null 2>&1
+    - run:
+        name: Execute scan
+        command: |
+          # Need to move this
+          ./bin/lw-scanner evaluate chriscircleci/vuln_django 7f7305bea884b63578c28d4513a916e2247ec152 -d=/home/circleci/project/ --scan-library-packages --html --pretty
 
   build-and-scan-vuln-image:
     machine: true
