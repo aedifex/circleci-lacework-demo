@@ -6,7 +6,7 @@ workflows:
   with-lw-scanner:
    jobs:
       - scan-vuln-image-with-lw-scanner
-      - scan-community-image-pretty-output
+      # - scan-community-image-pretty-output
       - build-and-scan-python-image
   #with-lacework-cli:
   #  jobs:
