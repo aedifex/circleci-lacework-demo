@@ -8,9 +8,24 @@
 # CircleCI && Lacework Demo
 An example of using Lacework &amp; CircleCI to incorporate application security into your CI/CD pipelines by leveraging the "shift left" methodology.
 
-### Okay, what exactly is shifting left?
+## Prerequisites
+
+Before using this demo, make sure you have the following prerequisites installed and configured:
+
+- CircleCI Account (https://circleci.com/)
+- CircleCI API Token (for integration)
+- Lacework Account (https://www.lacework.com/)
+- Lacework API Token (for integration)
+
+## Okay, what exactly is shifting left?
 
 Essentially incorporating software and application security into earlier junctures of the software delivery life-cycle, namely the building / testing phase, thus "shifting" left. Rather than security being a detractor to development speed and velocity, security becomes an enabler.
+
+## Use-cases
+
+- Container scanning
+- AMI scanning
+- Using custom vulnerability exceptions
 
 ### Differences between the lw-scanner and the lacework CLI?
 
@@ -29,3 +44,4 @@ Link to [documentation](https://support.lacework.com/hc/en-us/articles/150000177
 Link to [documentation](https://github.com/lacework/go-sdk/wiki/CLI-Documentation)
 
 One of the primary benefits associated with the CLI is the ability to leverage a powerful CircleCI feature called "Orbs" - which are effectively prepackaged pieces of configuration.
+
