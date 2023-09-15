@@ -5,9 +5,10 @@ orbs:
 workflows:
   with-lw-scanner:
    jobs:
-      - scan-vuln-image-with-lw-scanner
+      # - scan-vuln-image-with-lw-scanner
       # - scan-community-image-pretty-output
-      - build-and-scan-python-image
+      # - build-and-scan-python-image
+      - scan-packer-ami
   #with-lacework-cli:
   #  jobs:
   #    - cli-scan
@@ -145,3 +146,12 @@ jobs:
         name: Execute Scan
         command: |
             ./bin/lw-scanner evaluate node 10  --scan-library-packages --save --tags component=cruise-node
+
+  scan-packer-ami:
+    machine: true
+    steps:
+    - checkout
+    - run:
+        name: Build AMI
+        command: |
+          echo "Building AMI!"
