@@ -31,12 +31,14 @@ jobs:
     steps:
     - checkout
     - run: echo "Executing vuln scan"
+    - run: sleep 49
 
   code-lint:
     machine: true
     steps:
     - checkout
     - run: echo "Executing vuln scan"
+    - run: sleep 53
 
   build-image:
     machine: true
