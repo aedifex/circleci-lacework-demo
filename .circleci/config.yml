@@ -64,7 +64,7 @@ jobs:
         name: Execute scan
         command: |
           # Need to move this
-          ./bin/lw-scanner evaluate vulnerables/web-dvwa latest -d=/home/circleci/project/ --scan-library-packages --html --pretty --save --tags ci_provider=circleci,user=aedifex,build_stage=dev,component=node_frontend
+          ./bin/lw-scanner evaluate vulnerables/web-dvwa latest -d=/home/circleci/project/ --scan-library-packages --html --save --tags ci_provider=circleci,user=aedifex,build_stage=dev,component=node_frontend
     - run:
         name: Create directory to persist artifacts
         command: |
