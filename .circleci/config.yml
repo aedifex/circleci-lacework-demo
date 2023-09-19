@@ -17,7 +17,7 @@ workflows:
             - build-image
       - scan-vuln-image-with-lw-scanner:
           requires:
-            - build-image
+            - hold
       # - scan-community-image-pretty-output
       # - build-and-scan-python-image
       # - scan-packer-ami
