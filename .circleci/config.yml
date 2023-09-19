@@ -11,6 +11,10 @@ workflows:
           requires:
             - code-cov
             - code-lint
+      - hold:
+          type: approval
+          requires:
+            - build-image
       - scan-vuln-image-with-lw-scanner:
           requires:
             - build-image
