@@ -11,13 +11,13 @@ workflows:
           requires:
             - code-cov
             - code-lint
-      - hold:
+      - hold-for-approval:
           type: approval
           requires:
             - build-image
       - scan-vuln-image-with-lw-scanner:
           requires:
-            - hold
+            - hold-for-approval
       # - scan-community-image-pretty-output
       # - build-and-scan-python-image
       # - scan-packer-ami
