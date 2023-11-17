@@ -19,7 +19,7 @@ workflows:
           requires:
             - code-cov
             - code-lint
-      - hold-for-approval:
+      - hold-for-scanning-approval:
           type: approval
           requires:
             - build-node-image
@@ -27,19 +27,18 @@ workflows:
             - build-alpine-image
       - scan-dvwa-vuln-image-with-lw-scanner:
           requires:
-            - hold-for-approval
+            - hold-for-scanning-approval
       - scan-custom-vuln-image-with-lw-scanner:
           requires:
-            - hold-for-approval
-      - hold-for-approval:
-          name: Approve Deployment
+            - hold-for-scanning-approval
+      - hold-for-deployment-approval:
           type: approval
           requires:
             - scan-dvwa-vuln-image-with-lw-scanner
             - scan-custom-vuln-image-with-lw-scanner
       - deploy-assets-to-k8s:
           requires:
-            - hold-for-approval
+            - hold-for-deployment-approval
       # - build-and-scan-python-image
       # - scan-packer-ami
   # with-lacework-cli:
