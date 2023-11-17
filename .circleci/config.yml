@@ -60,6 +60,23 @@ jobs:
     - run:
         name: Build Node Docker Image
         command:  docker build -t aedifex_node:lacework-test -f src/node_image/Dockerfile  --label "component=lrad" .
+    - run:
+        # In lieu if having an install script proper, the following block
+        # pulls in the lw-scanner binary, un-tars it, and makes it executable.
+        name: Install lw-scanner
+        command: |
+          wget https://github.com/lacework/lacework-vulnerability-scanner/releases/download/v0.22.0/lw-scanner-linux-amd64.tar.gz -O lw-scanner.tar.gz
+          # This places the binary in a folder /bin/lw-scanner
+          tar xvf lw-scanner.tar.gz
+          # Make this executable
+          chmod +x ./bin/lw-scanner
+          # check scanner
+          ./bin/lw-scanner > /dev/null 2>&1
+    - run:
+        name: Execute scan
+        command: |
+          # Need to move this
+          ./bin/lw-scanner evaluate aedifex_node lacework-test -d=/home/circleci/project/ --scan-library-packages --save
 
 
   build-kali-image:
