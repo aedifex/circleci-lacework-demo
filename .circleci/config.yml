@@ -59,7 +59,7 @@ jobs:
     - checkout
     - run:
         name: Build Node Docker Image
-        command: docker build -t aedifex_node:lacework-test --label "component=lrad" .
+        command: ls && docker build -t aedifex_node:lacework-test --label "component=lrad" .
 
 
   build-kali-image:
