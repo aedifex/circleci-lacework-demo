@@ -31,6 +31,15 @@ workflows:
       - scan-custom-vuln-image-with-lw-scanner:
           requires:
             - hold-for-approval
+      - hold-for-approval:
+          name: Approve Deployment
+          type: approval
+          requires:
+            - scan-dvwa-vuln-image-with-lw-scanner
+            - scan-custom-vuln-image-with-lw-scanner
+      - deploy-assets-to-k8s:
+          requires:
+            - hold-for-approval
       # - build-and-scan-python-image
       # - scan-packer-ami
   # with-lacework-cli:
@@ -38,6 +47,12 @@ workflows:
   #     - cli-scan
 
 jobs:
+  deploy-assets-to-k8s:
+    machine: true
+    steps:
+    - checkout
+    - run: echo "deploying images"
+
   code-cov:
     machine: true
     steps:
