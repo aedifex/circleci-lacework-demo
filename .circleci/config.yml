@@ -7,14 +7,24 @@ workflows:
    jobs:
       - code-lint
       - code-cov
-      - build-image:
+      - build-node-image:
+          requires:
+            - code-cov
+            - code-lint
+      - build-kali-image:
+          requires:
+            - code-cov
+            - code-lint
+      - build-alpine-image:
           requires:
             - code-cov
             - code-lint
       - hold-for-approval:
           type: approval
           requires:
-            - build-image
+            - build-node-image
+            - build-kali-image
+            - build-alpine-image
       - scan-dvwa-vuln-image-with-lw-scanner:
           requires:
             - hold-for-approval
@@ -42,11 +52,23 @@ jobs:
     - run: echo "Executing vuln scan"
     - run: sleep 53
 
-  build-image:
+  build-node-image:
     machine: true
     steps:
     - checkout
     - run: echo "Executing vuln scan"
+
+  build-kali-image:
+    machine: true
+    steps:
+    - checkout
+    - run: ls -alt
+
+  build-alpine-image:
+    machine: true
+    steps:
+    - checkout
+    - run: ls -alt
 
   scan-dvwa-vuln-image-with-lw-scanner:
     machine: true
