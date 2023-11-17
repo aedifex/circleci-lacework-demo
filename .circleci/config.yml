@@ -112,6 +112,11 @@ jobs:
           chmod +x ./bin/lw-scanner
           # check scanner
           ./bin/lw-scanner > /dev/null 2>&1
+    - run:
+        name: Execute scan
+        command: |
+          # Need to move this
+          ./bin/lw-scanner evaluate aedifex_kali lacework-test -d=/home/circleci/project/ --scan-library-packages --save
 
   build-alpine-image:
     machine: true
@@ -133,6 +138,11 @@ jobs:
           chmod +x ./bin/lw-scanner
           # check scanner
           ./bin/lw-scanner > /dev/null 2>&1
+    - run:
+        name: Execute scan
+        command: |
+          # Need to move this
+          ./bin/lw-scanner evaluate aedifex_alpine lacework-test -d=/home/circleci/project/ --scan-library-packages --save
 
   scan-dvwa-vuln-image-with-lw-scanner:
     machine: true
