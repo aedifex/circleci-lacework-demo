@@ -78,18 +78,23 @@ jobs:
           # Need to move this
           ./bin/lw-scanner evaluate aedifex_node lacework-test -d=/home/circleci/project/ --scan-library-packages --save
 
-
   build-kali-image:
     machine: true
+    working_directory: ~/project/src
     steps:
     - checkout
-    - run: ls -alt
+    - run:
+        name: Build Kali Docker Image
+        command:  docker build -t aedifex_kali:lacework-test -f src/kali_image/Dockerfile  --label "component=lrad" .
 
   build-alpine-image:
     machine: true
+    working_directory: ~/project/src
     steps:
     - checkout
-    - run: ls -alt
+    - run:
+        name: Build Alpine Docker Image
+        command:  docker build -t aedifex_alpine:lacework-test -f src/alpine_image/Dockerfile  --label "component=lrad" .
 
   scan-dvwa-vuln-image-with-lw-scanner:
     machine: true
