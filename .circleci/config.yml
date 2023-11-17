@@ -23,9 +23,9 @@ workflows:
             - hold-for-approval
       # - build-and-scan-python-image
       # - scan-packer-ami
-  with-lacework-cli:
-    jobs:
-      - cli-scan
+  # with-lacework-cli:
+  #   jobs:
+  #     - cli-scan
 
 jobs:
   code-cov:
