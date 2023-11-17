@@ -56,7 +56,10 @@ jobs:
     machine: true
     steps:
     - checkout
-    - run: echo "Executing vuln scan"
+    - run:
+        name: Build Node Docker Image
+        command: |
+            docker build -t aedifex_node:lacework-test  -f src/node_image/Dockerfile --label "component=lrad"
 
   build-kali-image:
     machine: true
