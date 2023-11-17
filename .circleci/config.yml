@@ -54,12 +54,12 @@ jobs:
 
   build-node-image:
     machine: true
-    working_directory: ~/project/src/node_image
+    working_directory: ~/project/src
     steps:
     - checkout
     - run:
         name: Build Node Docker Image
-        command: ls && docker build -t aedifex_node:lacework-test --label "component=lrad" .
+        command:  docker build -t aedifex_node:lacework-test -f src/node_image/Dockerfile  --label "component=lrad" .
 
 
   build-kali-image:
